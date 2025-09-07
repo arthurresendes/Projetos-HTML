@@ -1,0 +1,346 @@
+@charset "UTF-8";
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    position: relative;
+    background-image: url(imagens/Jesus-morreu-na-cruz.jpg);
+    width: 100%;
+    height: 700px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    /* torna o header flexível */
+    flex-direction: column;
+    /* conteúdo em coluna (de cima para baixo) */
+    justify-content: center;
+    /* envia o conteúdo (nav) para o final do header */
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(2, 2, 2, 0.649);
+    /* Ajuste a opacidade aqui */
+    z-index: 1;
+}
+
+/* Para garantir que o conteúdo dentro do header fique acima da camada escura */
+header * {
+    position: relative;
+    z-index: 2;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    padding: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 80px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px black;
+    margin: 10px;
+    z-index: 2px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: brown;
+    text-decoration: underline;
+    transition-duration: .3s;
+}
+
+.titulo {
+    font-size: 60px;
+    color: black;
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 2px 2px 3px black;
+    padding: 25px;
+    margin: 10px;
+    text-align: center;
+}
+
+span {
+    color: #AB3030;
+}
+
+.conteudo1 , .conteudo2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.conteudo2 p{
+    text-align: normal;
+    text-indent: 10px;
+    padding: 10px;
+}
+
+.conteudo1 img , .conteudo2 img {
+    width: 30%;
+    height: 30%;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #ab303054;
+}
+
+.conteudo1 img:hover {
+    width: 31%;
+    height: 31%;
+    transition-duration: .5s;
+}
+
+.conteudo1 .p {
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.conteudo1 p {
+    margin-right: 15px;
+}
+
+.conteudo2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.antigoTestamento,
+.novoTestamento {
+    border: 2px solid rgba(50, 50, 50, 0.468);
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #ab303065;
+    padding: 10px;
+    margin: 10px;
+}
+
+.titulo2 {
+    font-size: 50px;
+    text-align: center;
+    font-family: monospace;
+    text-shadow: 1px 1px 2px black;
+    padding-bottom: 15px;
+    padding-top: 5px;
+}
+
+.conteudo2 p {
+    font-size: 18px;
+    padding: 10px;
+    text-align: justify;
+}
+
+.img2 img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    max-width: 300px;
+    /* Define um limite de largura para todas */
+    border: 2px solid rgba(0, 0, 0, 0.115);
+    /* Borda visível */
+    border-radius: 10px;
+    /* Cantos arredondados */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+    /* Sombra */
+    display: block;
+    margin: 0 auto;
+    /* Centraliza a imagem */
+}
+
+
+.button {
+    display: block;
+    /* Faz o botão se comportar como um bloco */
+    margin: 20px auto;
+    /* Centraliza horizontalmente */
+    border: 2px solid rgba(0, 0, 0, 0.597);
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.51);
+    padding: 10px;
+    text-align: center;
+    width: 60%;
+    background-color: #ab3030c6;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #AB3030;
+    text-decoration: underline;
+    color: black;
+    transition-duration: .3s;
+}
+
+.button a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    text-shadow: 2px 2px 3px black;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.display{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.img3 {
+    position: relative;
+    width: 30%;
+    /* ou o tamanho que preferir */
+    height: 30%;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 15px;
+}
+
+.imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* fundo preto com transparência */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.texto-overlay {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.conteudo3{
+    padding-left: 20px;
+    margin: 10px;
+}
+
+.livros{
+    background-color: rgba(220, 220, 220, 0.512);
+    padding: 40px 0px;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.h2livros{
+    font-size: 45px;
+}
+
+.nomeAutores{
+    padding: 10px;
+    font-size: 45px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Adicione ao final do arquivo: */
+@media (max-width: 1080px) {
+    .titulo {
+        font-size: 2.2rem;
+        padding: 10px;
+    }
+    nav ul {
+        font-size: 2.6rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .conteudo1, .conteudo2, .display {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .conteudo1 img, .img3 {
+        width: 70%;
+        height: auto;
+        margin: 0 auto 20px auto;
+    }
+    .conteudo1 .p, .conteudo3 {
+        padding-left: 0;
+        font-size: 1.1rem;
+    }
+    .antigoTestamento, .novoTestamento {
+        margin: 10px 0;
+    }
+}
+@media (max-width: 700px) {
+    header {
+        height: 350px;
+        background-size: cover;
+    }
+    .titulo {
+        font-size: 1.2rem;
+        padding: 5px;
+    }
+    nav ul {
+        font-size: 1.2rem;
+        padding: 8px;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .conteudo1 img, .img3 {
+        width: 95%;
+        height: auto;
+    }
+    .img2 img {
+        width: 100%;
+        max-width: 90vw;
+        height: auto;
+    }
+    .button {
+        width: 90%;
+        font-size: 1rem;
+        padding: 6px;
+    }
+    .titulo2, .h2livros, .nomeAutores {
+        font-size: 1.3rem;
+        padding: 5px;
+    }
+    .livros {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+    .conteudo3 {
+        padding-left: 0;
+        margin: 5px;
+        font-size: 1rem;
+    }
+}
