@@ -105,10 +105,124 @@
                     </div>
                 </div>
             </div>
+            <br><br>
         </section>
+
+        <!-- BUSCA INTELIGENTE - NOVA SEÇÃO -->
+        <section class="busca-inteligente">
+            <div class="container">
+                <h2>BUSCA INTELIGENTE</h2>
+                <p class="text-center mb-5">Encontre o imóvel perfeito com nossa busca inteligente</p>
+                
+                <div class="busca-header">
+                    <div class="busca-input">
+                        <input type="text" class="form-control" placeholder="Buscar por nome, localização..." id="input-busca">
+                    </div>
+                    <div class="ordenar-select">
+                        <select class="form-control" id="ordenar-resultados">
+                            <option value="">Ordenar por</option>
+                            <option value="preco_asc">Menor preço</option>
+                            <option value="preco_desc">Maior preço</option>
+                            <option value="metros">Maior metragem</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="filtros-container">
+                            <h3>Filtros</h3>
+                            
+                            <div class="filtro-grupo">
+                                <h4>Tipo de Imóvel</h4>
+                                <ul class="filtro-opcoes">
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="tipo" value="apartamento" checked> Apartamento
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="tipo" value="casa"> Casa
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="tipo" value="terreno"> Terreno
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="filtro-grupo">
+                                <h4>Preço</h4>
+                                <ul class="filtro-opcoes">
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="preco" value="0-300000"> Até R$ 300.000
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="preco" value="300000-600000"> R$ 300.000 - R$ 600.000
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="preco" value="600000-1000000"> R$ 600.000 - R$ 1.000.000
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="preco" value="1000000+" checked> Acima de R$ 1.000.000
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="filtro-grupo">
+                                <h4>Dormitórios</h4>
+                                <ul class="filtro-opcoes">
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="dormitorios" value="1"> 1 dormitório
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="dormitorios" value="2" checked> 2 dormitórios
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="dormitorios" value="3"> 3 dormitórios
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="dormitorios" value="4+"> 4 ou mais
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <button class="btn-aplicar-filtros" id="aplicar-filtros">Aplicar Filtros</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="resultados-busca" id="resultados-busca">
+                            <!-- Os cards de imóveis serão inseridos aqui via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
@@ -126,7 +240,190 @@
                 pause: 'hover',
                 ride: 'carousel'
             });
+            
+            // Inicializar a busca inteligente
+            inicializarBuscaInteligente();
         });
+        
+        // Dados dos imóveis (simulando um banco de dados)
+        const imoveis = [
+            {
+                id: 1,
+                nome: "Apartamento 58 metros",
+                tipo: "apartamento",
+                preco: 450000,
+                dormitorios: 2,
+                metros: 58,
+                cidade: "São Paulo",
+                bairro: "Vila Mariana",
+                descricao: "Apartamento com 58m², 2 dormitórios, sala ampla, cozinha americana e banheiro social. Próximo ao metrô e com fácil acesso às principais vias.",
+                imagem: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                nome: "Casa com Piscina",
+                tipo: "casa",
+                preco: 780000,
+                dormitorios: 3,
+                metros: 120,
+                cidade: "São Paulo",
+                bairro: "Jardins",
+                descricao: "Casa com 3 dormitórios, sendo 1 suíte, sala ampla, cozinha planejada, área de serviço e piscina. Excelente localização.",
+                imagem: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                nome: "Terreno Residencial",
+                tipo: "terreno",
+                preco: 250000,
+                dormitorios: 0,
+                metros: 300,
+                cidade: "São Paulo",
+                bairro: "Morumbi",
+                descricao: "Terreno plano, 300m², ótima localização, próximo a comércio e escolas. Ideal para construção de residência.",
+                imagem: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 4,
+                nome: "Apartamento Alto Padrão",
+                tipo: "apartamento",
+                preco: 1200000,
+                dormitorios: 4,
+                metros: 180,
+                cidade: "São Paulo",
+                bairro: "Moema",
+                descricao: "Apartamento de alto padrão com 4 suítes, varanda gourmet, sacada, 3 vagas de garagem. Lazer completo com piscina, salão de festas e academia.",
+                imagem: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 5,
+                nome: "Casa Compacta",
+                tipo: "casa",
+                preco: 320000,
+                dormitorios: 2,
+                metros: 65,
+                cidade: "São Paulo",
+                bairro: "Tatuapé",
+                descricao: "Casa compacta com 2 dormitórios, sala, cozinha, área de serviço e quintal. Excelente oportunidade para primeiro imóvel.",
+                imagem: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 6,
+                nome: "Terreno Comercial",
+                tipo: "terreno",
+                preco: 550000,
+                dormitorios: 0,
+                metros: 450,
+                cidade: "São Paulo",
+                bairro: "Pinheiros",
+                descricao: "Terreno comercial, 450m², localização privilegiada em área de grande fluxo. Ideal para estabelecimento comercial ou prédio.",
+                imagem: "https://images.unsplash.com/photo-1472289065660-ca3b3040534c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+        
+        function inicializarBuscaInteligente() {
+            // Exibir todos os imóveis inicialmente
+            exibirImoveis(imoveis);
+            
+            // Configurar eventos dos filtros
+            document.getElementById('aplicar-filtros').addEventListener('click', filtrarImoveis);
+            document.getElementById('input-busca').addEventListener('keyup', filtrarImoveis);
+            document.getElementById('ordenar-resultados').addEventListener('change', filtrarImoveis);
+        }
+        
+        function filtrarImoveis() {
+            let imoveisFiltrados = [...imoveis];
+            
+            // Filtro por texto de busca
+            const textoBusca = document.getElementById('input-busca').value.toLowerCase();
+            if (textoBusca) {
+                imoveisFiltrados = imoveisFiltrados.filter(imovel => 
+                    imovel.nome.toLowerCase().includes(textoBusca) || 
+                    imovel.descricao.toLowerCase().includes(textoBusca) ||
+                    imovel.bairro.toLowerCase().includes(textoBusca)
+                );
+            }
+            
+            // Filtro por tipo de imóvel
+            const tiposSelecionados = Array.from(document.querySelectorAll('input[name="tipo"]:checked')).map(input => input.value);
+            if (tiposSelecionados.length > 0) {
+                imoveisFiltrados = imoveisFiltrados.filter(imovel => tiposSelecionados.includes(imovel.tipo));
+            }
+            
+            // Filtro por preço
+            const precoSelecionado = document.querySelector('input[name="preco"]:checked').value;
+            if (precoSelecionado) {
+                if (precoSelecionado === '0-300000') {
+                    imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco <= 300000);
+                } else if (precoSelecionado === '300000-600000') {
+                    imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco > 300000 && imovel.preco <= 600000);
+                } else if (precoSelecionado === '600000-1000000') {
+                    imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco > 600000 && imovel.preco <= 1000000);
+                } else if (precoSelecionado === '1000000+') {
+                    imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco > 1000000);
+                }
+            }
+            
+            // Filtro por dormitórios
+            const dormitoriosSelecionados = Array.from(document.querySelectorAll('input[name="dormitorios"]:checked')).map(input => {
+                if (input.value === '4+') return 4;
+                return parseInt(input.value);
+            });
+            
+            if (dormitoriosSelecionados.length > 0) {
+                imoveisFiltrados = imoveisFiltrados.filter(imovel => {
+                    if (dormitoriosSelecionados.includes(4) && imovel.dormitorios >= 4) return true;
+                    return dormitoriosSelecionados.includes(imovel.dormitorios);
+                });
+            }
+            
+            // Ordenação
+            const ordenacao = document.getElementById('ordenar-resultados').value;
+            if (ordenacao === 'preco_asc') {
+                imoveisFiltrados.sort((a, b) => a.preco - b.preco);
+            } else if (ordenacao === 'preco_desc') {
+                imoveisFiltrados.sort((a, b) => b.preco - a.preco);
+            } else if (ordenacao === 'metros') {
+                imoveisFiltrados.sort((a, b) => b.metros - a.metros);
+            }
+            
+            // Exibir resultados
+            exibirImoveis(imoveisFiltrados);
+        }
+        
+        function exibirImoveis(imoveis) {
+            const container = document.getElementById('resultados-busca');
+            container.innerHTML = '';
+            
+            if (imoveis.length === 0) {
+                container.innerHTML = '<p class="text-center w-100">Nenhum imóvel encontrado com os filtros selecionados.</p>';
+                return;
+            }
+            
+            imoveis.forEach(imovel => {
+                const card = `
+                    <div class="card-imovel">
+                        <img src="${imovel.imagem}" alt="${imovel.nome}">
+                        <div class="card-content">
+                            <h3>${imovel.nome}</h3>
+                            <div class="card-preco">R$ ${imovel.preco.toLocaleString('pt-BR')}</div>
+                            <div class="card-detalhes">
+                                <span><i class="fas fa-bed"></i> ${imovel.dormitorios} dormitório(s)</span>
+                                <span><i class="fas fa-ruler-combined"></i> ${imovel.metros}m²</span>
+                            </div>
+                            <div class="card-detalhes">
+                                <span><i class="fas fa-map-marker-alt"></i> ${imovel.bairro}</span>
+                            </div>
+                            <p class="card-descricao">${imovel.descricao}</p>
+                            <button class="btn-detalhes" onclick="alert('Entre em contato para mais informações sobre ${imovel.nome}')">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
     </script>
 </body>
 
