@@ -32,4 +32,4 @@ Este repositório reúne vários projetos desenvolvidos em HTML, cada um com uma
 
 ---
 
-> Atualize os links acima com o endereço das páginas, conforme forem publicados.
+> Acesse cada título para ver as páginas.
