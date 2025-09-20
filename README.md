@@ -7,7 +7,7 @@ Este repositório reúne vários projetos desenvolvidos em HTML, cada um com uma
   Projeto em desenvolvimento que apresenta a história da Bíblia, com resumos de capítulos para facilitar o entendimento dos leitores.
 ---
 
-- **[ChaleHotel](https://arthurresendes.github.io/Projetos-HTML/ChaleHotel/index.html)**  
+- **[Chale Hotel](https://arthurresendes.github.io/Projetos-HTML/ChaleHotel/index.html)**  
   Site para um chalé de hotel, com informações sobre acomodações, serviços, reservas e atrações locais.
 ---
 
@@ -19,7 +19,7 @@ Este repositório reúne vários projetos desenvolvidos em HTML, cada um com uma
   Interface da tela inicial do Spotify criada com Bootstrap, demonstrando conceitos de layout, responsividade e design moderno para estudo.
 ---
 
-- **[NoticiasCidade](https://arthurresendes.github.io/Projetos-HTML/NoticiasCidades/index.html)**  
+- **[Noticias Cidade](https://arthurresendes.github.io/Projetos-HTML/NoticiasCidades/index.html)**  
   Site para divulgação de notícias sobre uma cidade, com informações sobre política, esportes, eventos, cultura e utilidade pública.
 ---
 
