@@ -3,9 +3,6 @@
 Este repositório reúne vários projetos desenvolvidos em HTML, cada um com uma proposta diferente. Abaixo, confira um breve resumo de cada projeto. Clique no nome do projeto para ser direcionado à respectiva página.
 
 ---
-
-## Projetos
-
 - **[Biblia](https://arthurresendes.github.io/Projetos-HTML/Biblia/index.html)**  
   Projeto em desenvolvimento que apresenta a história da Bíblia, com resumos de capítulos para facilitar o entendimento dos leitores.
 
