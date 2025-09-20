@@ -7,11 +7,11 @@ Este repositório reúne vários projetos desenvolvidos em HTML, cada um com uma
   Projeto em desenvolvimento que apresenta a história da Bíblia, com resumos de capítulos para facilitar o entendimento dos leitores.
 ---
 
-- **[ChaleHotel](https://arthurresendes.github.io/Projetos-HTML/ChaleHotel/index.html)**  
+**[ChaleHotel](https://arthurresendes.github.io/Projetos-HTML/ChaleHotel/index.html)**  
   Site para um chalé de hotel, com informações sobre acomodações, serviços, reservas e atrações locais.
 ---
 
-- **[Museu](https://arthurresendes.github.io/Projetos-HTML/Museu/inde.html)**  
+**[Museu](https://arthurresendes.github.io/Projetos-HTML/Museu/inde.html)**  
   Projeto de site para um museu, trazendo informações sobre exposições, eventos, acervo e contato, promovendo a cultura e facilitando o acesso dos visitantes.
 ---
 
