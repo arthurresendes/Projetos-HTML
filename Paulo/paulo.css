@@ -9,7 +9,7 @@
             height: 810px;
             background:
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 70%, rgba(255, 255, 255, 1) 100%),
-                url('imagens/header.png') no-repeat center center;
+                url('Imagens/header.png') no-repeat center center;
             background-size: cover;
             overflow: hidden;
         }

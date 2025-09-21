@@ -233,18 +233,6 @@
         crossorigin="anonymous"></script>
 
     <script>
-        // Garantir que o carrossel funcione automaticamente
-        $(document).ready(function() {
-            $('#carousel-imoveis').carousel({
-                interval: 5000,
-                pause: 'hover',
-                ride: 'carousel'
-            });
-            
-            // Inicializar a busca inteligente
-            inicializarBuscaInteligente();
-        });
-        
         // Dados dos imóveis (simulando um banco de dados)
         const imoveis = [
             {
@@ -320,6 +308,33 @@
                 imagem: "https://images.unsplash.com/photo-1472289065660-ca3b3040534c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
             }
         ];
+
+        // Garantir que o carrossel funcione automaticamente
+        $(document).ready(function() {
+            $('#carousel-imoveis').carousel({
+                interval: 5000,
+                pause: 'hover',
+                ride: 'carousel'
+            });
+            
+            // Adicionar evento de clique nas imagens do carrossel
+            $('.carousel-item').click(function() {
+                const nomeImovel = $(this).data('imovel');
+                const preco = $(this).data('preco');
+                const descricao = $(this).find('p').text();
+                abrirWhatsApp(nomeImovel, preco, descricao);
+            });
+            
+            // Inicializar a busca inteligente
+            inicializarBuscaInteligente();
+        });
+
+        function abrirWhatsApp(nome, preco, descricao) {
+            const telefone = "5511989753945";
+            const mensagem = `Olá Paullo, estou interessado no ${nome} ${preco}. ${descricao}`;
+            const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
         
         function inicializarBuscaInteligente() {
             // Exibir todos os imóveis inicialmente
@@ -329,6 +344,12 @@
             document.getElementById('aplicar-filtros').addEventListener('click', filtrarImoveis);
             document.getElementById('input-busca').addEventListener('keyup', filtrarImoveis);
             document.getElementById('ordenar-resultados').addEventListener('change', filtrarImoveis);
+            
+            // Aplicar filtros em tempo real quando checkbox/radio mudam
+            const filtros = document.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+            filtros.forEach(filtro => {
+                filtro.addEventListener('change', filtrarImoveis);
+            });
         }
         
         function filtrarImoveis() {
@@ -351,15 +372,16 @@
             }
             
             // Filtro por preço
-            const precoSelecionado = document.querySelector('input[name="preco"]:checked').value;
+            const precoSelecionado = document.querySelector('input[name="preco"]:checked');
             if (precoSelecionado) {
-                if (precoSelecionado === '0-300000') {
+                const valorPreco = precoSelecionado.value;
+                if (valorPreco === '0-300000') {
                     imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco <= 300000);
-                } else if (precoSelecionado === '300000-600000') {
+                } else if (valorPreco === '300000-600000') {
                     imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco > 300000 && imovel.preco <= 600000);
-                } else if (precoSelecionado === '600000-1000000') {
+                } else if (valorPreco === '600000-1000000') {
                     imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco > 600000 && imovel.preco <= 1000000);
-                } else if (precoSelecionado === '1000000+') {
+                } else if (valorPreco === '1000000+') {
                     imoveisFiltrados = imoveisFiltrados.filter(imovel => imovel.preco > 1000000);
                 }
             }
@@ -391,16 +413,17 @@
             exibirImoveis(imoveisFiltrados);
         }
         
-        function exibirImoveis(imoveis) {
+        function exibirImoveis(imoveisParaExibir) {
             const container = document.getElementById('resultados-busca');
             container.innerHTML = '';
             
-            if (imoveis.length === 0) {
+            if (imoveisParaExibir.length === 0) {
                 container.innerHTML = '<p class="text-center w-100">Nenhum imóvel encontrado com os filtros selecionados.</p>';
                 return;
             }
             
-            imoveis.forEach(imovel => {
+            imoveisParaExibir.forEach(imovel => {
+                const dormitoriosTexto = imovel.dormitorios === 0 ? 'Terreno' : `${imovel.dormitorios} dormitório(s)`;
                 const card = `
                     <div class="card-imovel">
                         <img src="${imovel.imagem}" alt="${imovel.nome}">
@@ -408,14 +431,14 @@
                             <h3>${imovel.nome}</h3>
                             <div class="card-preco">R$ ${imovel.preco.toLocaleString('pt-BR')}</div>
                             <div class="card-detalhes">
-                                <span><i class="fas fa-bed"></i> ${imovel.dormitorios} dormitório(s)</span>
+                                <span><i class="fas fa-bed"></i> ${dormitoriosTexto}</span>
                                 <span><i class="fas fa-ruler-combined"></i> ${imovel.metros}m²</span>
                             </div>
                             <div class="card-detalhes">
                                 <span><i class="fas fa-map-marker-alt"></i> ${imovel.bairro}</span>
                             </div>
                             <p class="card-descricao">${imovel.descricao}</p>
-                            <button class="btn-detalhes" onclick="alert('Entre em contato para mais informações sobre ${imovel.nome}')">
+                            <button class="btn-detalhes" onclick="abrirWhatsApp('${imovel.nome}', 'R$ ${imovel.preco.toLocaleString('pt-BR')}', '${imovel.descricao}')">
                                 Ver Detalhes
                             </button>
                         </div>
